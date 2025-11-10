@@ -3,7 +3,7 @@
     <div class="card-grid">
       <div
         class="card"
-        v-for="item in filteredRecommendations"
+        v-for="item in paginationData"
         :key="item.url"
         @click="openLink(item.url)"
       >
@@ -14,7 +14,9 @@
           <div class="card-title">
             <h3>{{ item.name }}</h3>
             <div style="display: flex;align-items: center;gap: 5px;">
-                <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{ tag }}</el-tag>
+              <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{
+                tag
+              }}</el-tag>
             </div>
           </div>
         </div>
@@ -24,12 +26,26 @@
       </div>
     </div>
 
-    <!-- 加载更多 -->
-    <div class="load-more" v-if="hasMoreItems" @click="loadMore">
-      加载更多<span>↓</span>
-    </div>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="total"
+      :page-size="$static.metadata.paginationValue"
+      hide-on-single-page
+      style="display: flex;justify-content: center;"
+      @current-change="onChangePage"
+    >
+    </el-pagination>
   </div>
 </template>
+
+<static-query>
+query {
+  metadata {
+    paginationValue
+  }
+}
+</static-query>
 
 <script>
 export default {
@@ -39,25 +55,36 @@ export default {
       default: [],
     },
   },
-  computed: {
-    filteredRecommendations() {
-      return this.cardListData.slice(0, this.displayedCount);
-    },
-    hasMoreItems() {
-      return this.displayedCount < this.cardListData.length;
-    },
-  },
   data() {
     return {
-      displayedCount: 12,
+      page: 1, // 当前的页数
+      paginationData: [], // 分页的后的数据集合
+      total: 0
     };
+  },
+  created() {
+    this.page = this.$route.query.page
+      ? parseInt(this.$route.query.page, 10)
+      : 1;
+    this.init();
+  },
+  mounted(){
+    this.total = this.cardListData?.length
   },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
     },
-    loadMore() {
-      this.displayedCount += this.displayedCount;
+    init() {
+      const paginationValue = this.$static.metadata.paginationValue;
+      const start = (this.page - 1) * paginationValue;
+      const end = start + paginationValue;
+
+      this.paginationData = this.cardListData.slice(start, end);
+    },
+    onChangePage(page) {
+      this.page = page;
+      this.init();
     },
   },
 };

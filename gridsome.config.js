@@ -5,8 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: '小哲的个人导航网站',
-  siteDescription: '收录学习和工作过程中遇到的优质项目或者网站',
-  icon: 'https://pic1.imgdb.cn/item/68955b1758cb8da5c810dc12.jpg',
+  siteName: 'GrowthGO',
+  siteDescription: '快速搭建专属于自己的导航网站，采用响应式设计，适应任何尺寸，以及首屏加载速度快，SEO友好，UI美观、简洁',
+  icon: './src/assets/images/logo.png',
   plugins: []
 }

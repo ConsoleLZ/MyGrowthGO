@@ -31,7 +31,7 @@ module.exports = function (api) {
   api.createPages(({ createPage }) => {
     createPage({
       path: '/category/:tag',
-      component: './src/templates/Category.vue'
+      component: './src/pages/Category.vue'
     })
   })
 
@@ -51,5 +51,15 @@ module.exports = function (api) {
     const redirectsContent = redirectRules.join('\n');
     const outputPath = path.join(__dirname, 'dist', '_redirects');
     fs.writeFileSync(outputPath, redirectsContent, 'utf8');
+
+    // 生成Nginx配置
+    if (process.env.GENERATE_NGINX_RULES === 'true') {
+      const { execSync } = require('child_process');
+      try {
+        execSync('node scripts/generate-nginx-rules.js', { stdio: 'inherit' });
+      } catch (e) {
+        console.error('生成nginx规则失败:', e.message);
+      }
+    }
   });
 }

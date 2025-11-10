@@ -2,6 +2,7 @@
   "name": "GrowthGO",
   "private": true,
   "scripts": {
+    "build-nginx": "cross-env GENERATE_NGINX_RULES=true gridsome build",
     "build": "gridsome build",
     "dev": "gridsome develop",
     "explore": "gridsome explore"
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.28.5",
-    "babel-plugin-component": "^1.1.1"
+    "babel-plugin-component": "^1.1.1",
+    "cross-env": "^10.1.0"
   }
 }
