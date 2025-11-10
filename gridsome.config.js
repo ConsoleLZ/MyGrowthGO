@@ -7,6 +7,6 @@
 module.exports = {
   siteName: '小哲的个人导航网站',
   siteDescription: '收录学习和工作过程中遇到的优质项目或者网站',
-  icon: '/favicon.ico',
+  icon: 'https://pic1.imgdb.cn/item/6911c7323203f7be00ed4394.jpg',
   plugins: []
 }
