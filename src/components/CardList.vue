@@ -52,24 +52,32 @@ export default {
   props: {
     cardListData: {
       type: Array,
-      default: [],
+      default: () => [],
     },
   },
   data() {
     return {
-      page: 1, // 当前的页数
-      paginationData: [], // 分页的后的数据集合
-      total: 0
+      page: 1,
+      paginationData: [],
+      total: 0,
     };
   },
   created() {
-    this.page = this.$route.query.page
-      ? parseInt(this.$route.query.page, 10)
-      : 1;
+    this.page = this.$route.query.page ? parseInt(this.$route.query.page, 10) : 1;
     this.init();
   },
-  mounted(){
-    this.total = this.cardListData?.length
+  watch: {
+    cardListData: {
+      handler(newData) {
+        this.total = newData.length;
+        this.page = 1;
+        this.init();
+      },
+      immediate: true,
+    },
+    page(newPage) {
+      this.init();
+    }
   },
   methods: {
     openLink(url) {
@@ -79,12 +87,10 @@ export default {
       const paginationValue = this.$static.metadata.paginationValue;
       const start = (this.page - 1) * paginationValue;
       const end = start + paginationValue;
-
       this.paginationData = this.cardListData.slice(start, end);
     },
     onChangePage(page) {
       this.page = page;
-      this.init();
     },
   },
 };

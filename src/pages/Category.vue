@@ -12,22 +12,37 @@ import { tags, mainData } from "@/data.mjs";
 import CardListComp from "@/components/CardList.vue";
 
 export default {
-  components: {
-    CardListComp,
-  },
+  components: { CardListComp },
   data() {
     return {
-      title: tags[this.$route.params.tag],
+      title: "",
+      filterData: [],
     };
   },
-  computed: {
-    filterData() {
-      if (this.$route.params.tag == "all") {
-        return mainData;
-      }else {
-        return mainData.filter(item=>item.tags.includes(tags[this.$route.params.tag]))
+  watch: {
+    "$route.params.tag": {
+      handler(newTag) {
+        this.title = tags[newTag] || newTag;
+        this.init();
+      },
+      immediate: true,
+    },
+  },
+  methods: {
+    init() {
+      const tag = this.$route.params.tag;
+
+      if (tag === "all") {
+        this.filterData = mainData;
+      } else {
+        this.filterData = mainData.filter((item) =>
+          item.tags.includes(tags[tag])
+        );
       }
     },
+  },
+  created() {
+    this.init();
   },
 };
 </script>

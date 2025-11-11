@@ -153,7 +153,8 @@ export default {
       }
     },
     onGoCategory(tag) {
-      location.href = `/category/${tag}`;
+      // location.href = `/category/${tag}`;
+      this.$router.push(`/category/${tag}`)
     },
     handleScroll() {
       this.showHeaderBackground = window.scrollY > 0;
