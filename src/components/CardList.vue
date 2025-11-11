@@ -121,10 +121,6 @@ export default {
   height: 115px;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-}
-
 .card-header {
   display: flex;
   align-items: center;
