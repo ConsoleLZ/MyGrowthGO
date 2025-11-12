@@ -43,6 +43,14 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'Cloudflare',
+    ico: 'https://www.cloudflare-cn.com/favicon.ico',
+    url: 'https://www.cloudflare-cn.com/',
+    description: '随时随地连接、保护和构建',
+    tags: [tags.cloud],
+    recommend: true
+  },
+  {
     name: 'Tauri',
     ico: 'https://tauri.app/favicon.svg',
     url: 'https://tauri.app/zh-cn/',
