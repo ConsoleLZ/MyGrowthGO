@@ -8,18 +8,26 @@ quickAccess:
     description: 易学易用，性能出色，适用场景丰富的 Web 前端框架
     icon: https://cn.vuejs.org/logo.svg
     url: https://cn.vuejs.org/
-  - name: nodeJS
-    description: Node.js 是一个开源的、跨平台的 JavaScript 运行时环境
-    icon: https://nodejs.cn/favicon.svg
-    url: https://nodejs.cn/
-  - name: npm
-    description: Build amazing things
-    icon: https://static-production.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png
-    url: https://www.npmjs.com/
+  - name: react
+    description: 用于构建 Web 和原生交互界面的库
+    icon: https://react.docschina.org/favicon.ico
+    url: https://react.docschina.org/
+  - name: 掘金
+    description: 一个很好的开发者社区，可以看看大佬的各种文章
+    icon: https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/static/favicons/favicon-32x32.png
+    url: https://juejin.cn/
   - name: github
     description: 全球最大的开发者平台
     icon: https://github.githubassets.com/favicons/favicon.svg
     url: https://github.com/
+  - name: 通义千问
+    description: 阿里达摩院推出的大模型，拥有千亿参数，可用于智能问答、知识检索、文案创作等场景
+    icon: https://acd-assets.alicdn.com/acd_work/tongyi-portal/assets/logo.svg
+    url: https://www.tongyi.com/
+  - name: Deepseek
+    description: 深度求索（DeepSeek）
+    icon: https://www.deepseek.com/favicon.ico
+    url: https://chat.deepseek.com/
 
 # 首页底部的友情链接
 friendLink:
@@ -27,6 +35,8 @@ friendLink:
     url: https://github.com/ConsoleLZ/GrowthGO
   - name: myBlog
     url: https://consolelz.github.io/
+  - name: 掘金
+    url: https://juejin.cn/user/1295692732053241
 
 
 # 网站上线时间（这个会展示在统计页面的运行时长那里, 注意格式：xxxx-xx-xx xx:xx）

@@ -47,14 +47,16 @@ export const mainData = [
     ico: 'https://tauri.app/favicon.svg',
     url: 'https://tauri.app/zh-cn/',
     description: '创建小型、快速、安全、跨平台的应用程序',
-    tags: [tags.web, tags.development]
+    tags: [tags.web, tags.development],
+    recommend: true
   },
   {
     name: '无水印下载鸭',
     ico: 'https://download.linglan01.cn/favicon.ico',
     url: 'https://download.linglan01.cn/',
     description: '支持抖音、B站、小红书、微信公众号等平台视频图片无水印下载，免费快速去水印。',
-    tags: [tags.tools]
+    tags: [tags.tools],
+    recommend: true
   },
   {
     name: 'Buefy',
@@ -131,7 +133,8 @@ export const mainData = [
     ico: 'https://affine.pro/favicon-96.png',
     url: 'https://affine.pro/',
     description: 'AFFiNE 是一个包含完全合并的文档、白板和数据库的工作区。完成更多的事情，你的创造力不是单调的。',
-    tags: [tags.tools, tags.development]
+    tags: [tags.tools, tags.development],
+    recommend: true
   },
   {
     name: 'ImgTools',
@@ -453,14 +456,16 @@ export const mainData = [
     ico: 'https://electron.nodejs.cn/assets/img/favicon.ico',
     url: 'https://electron.nodejs.cn/',
     description: '使用 JavaScript、HTML 和 CSS 构建跨平台桌面应用',
-    tags: [tags.development]
+    tags: [tags.development],
+    recommend: true
   },
   {
     name: 'Node SerialPort',
     ico: 'https://serialport.io/img/serialport-logo.png',
     url: 'https://serialport.io/',
     description: '使用 JavaScript 与您的串行设备通信',
-    tags: [tags.hardware, tags.development]
+    tags: [tags.hardware, tags.development],
+    recommend: true
   },
   {
     name: 'iLovePDF',
@@ -523,7 +528,8 @@ export const mainData = [
     ico: 'https://oshwhub.com/favicon.ico',
     url: 'https://oshwhub.com/',
     description: '基于嘉立创EDA进行电路设计的硬件开源设计大本营,集嵌入式、电子模块、DIY设计、物联网、智能硬件、电子应用、电工电子等多种电路设计模块为一体的开源硬件平台',
-    tags: [tags.hardware, tags.community]
+    tags: [tags.hardware, tags.community],
+    recommend: true
   },
   {
     name: '帽子云',
@@ -600,7 +606,8 @@ export const mainData = [
     ico: '/imgNull.png',
     url: 'https://github.com/78/xiaozhi-esp32',
     description: '打造自己的 AI 好友',
-    tags: [tags.ai, tags.hardware]
+    tags: [tags.ai, tags.hardware],
+    recommend: true
   },
   {
     name: '努力上班，绝不摸鱼！',
@@ -663,7 +670,8 @@ export const mainData = [
     ico: '/imgNull.png',
     url: 'https://github.com/termux/termux-app',
     description: 'Termux - 适用于 Android 操作系统的终端仿真器应用程序，可通过各种软件包进行扩展。',
-    tags: [tags.tools]
+    tags: [tags.tools],
+    recommend: true
   },
   {
     name: 'robinmoisson / staticrypt',
@@ -796,7 +804,8 @@ export const mainData = [
     ico: 'https://www.blender.org/wp-content/themes/bthree/assets/icons/favicon.svg',
     url: 'https://www.blender.org/',
     description: '3D建模工具',
-    tags: [tags.modeling, tags.tools]
+    tags: [tags.modeling, tags.tools],
+    recommend: true
   },
   {
     name: 'Spline 3D',
@@ -1020,14 +1029,16 @@ export const mainData = [
     ico: 'https://cn.vuejs.org/logo.svg',
     url: 'https://cn.vuejs.org/',
     description: '易学易用，性能出色，适用场景丰富的 Web 前端框架.',
-    tags: [tags.development, tags.learning, tags.web]
+    tags: [tags.development, tags.learning, tags.web],
+    recommend: true
   },
   {
     name: 'react',
     ico: 'https://react.docschina.org/favicon.ico',
     url: 'https://react.docschina.org/',
     description: '用于构建 Web 和原生交互界面的库',
-    tags: [tags.development, tags.learning, tags.web]
+    tags: [tags.development, tags.learning, tags.web],
+    recommend: true
   },
   {
     name: 'vitepress',
@@ -1069,28 +1080,32 @@ export const mainData = [
     ico: 'https://component-party.dev/favicon.png',
     url: 'https://component-party.dev/',
     description: '站长极力推荐的一个各大框架对比学习的网站',
-    tags: [tags.learning, tags.web]
+    tags: [tags.learning, tags.web],
+    recommend: true
   },
   {
     name: 'React Native',
     ico: 'https://reactnative.cn/img/favicon.ico',
     url: 'https://reactnative.cn/',
     description: '使用React来创建 Android 和 iOS 的原生应用',
-    tags: [tags.development, tags.web]
+    tags: [tags.development, tags.web],
+    recommend: true
   },
   {
     name: 'uni-app',
     ico: 'https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/icon.png?v=1556263038788',
     url: 'https://uniapp.dcloud.net.cn/',
     description: '使用Vue进行跨端开发',
-    tags: [tags.development, tags.web]
+    tags: [tags.development, tags.web],
+    recommend: true
   },
   {
     name: 'threeJS',
     ico: 'https://threejs.org/files/favicon.ico',
     url: 'https://threejs.org/',
     description: '开发你的3d网站吧',
-    tags: [tags.development, tags.web, tags.modeling]
+    tags: [tags.development, tags.web, tags.modeling],
+    recommend: true
   },
   {
     name: '高德开放平台',
@@ -1473,7 +1488,7 @@ export const mainData = [
   {
     name: '通义千问',
     ico: 'https://acd-assets.alicdn.com/acd_work/tongyi-portal/assets/logo.svg',
-    url: 'https://tongyi.aliyun.com/',
+    url: 'https://www.tongyi.com/',
     description: '阿里达摩院推出的大模型，拥有千亿参数，可用于智能问答、知识检索、文案创作等场景',
     tags: [tags.ai]
   },
@@ -1524,14 +1539,16 @@ export const mainData = [
     ico: 'https://www.leancloud.cn/favicon.ico',
     url: 'https://www.leancloud.cn/',
     description: '可以存储数据，用户信息的云平台',
-    tags: [tags.cloud]
+    tags: [tags.cloud],
+    recommend: true
   },
   {
     name: 'vercel',
     ico: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
     url: 'https://vercel.com/',
     description: '自动化部署项目',
-    tags: [tags.development, tags.cloud]
+    tags: [tags.development, tags.cloud],
+    recommend: true
   },
   {
     name: 'Uploadcare',
@@ -1559,14 +1576,16 @@ export const mainData = [
     ico: 'https://github.githubassets.com/favicons/favicon.png',
     url: 'https://github.com/',
     description: '全球领先的人工智能开发者平台',
-    tags: [tags.cloud, tags.community, tags.projectManagement]
+    tags: [tags.cloud, tags.community, tags.projectManagement],
+    recommend: true
   },
   {
     name: 'Gitee',
     ico: 'https://gitee.com/favicon.ico',
     url: 'https://gitee.com/',
     description: 'DevOps一站式研发效能平台',
-    tags: [tags.cloud, tags.community, tags.projectManagement]
+    tags: [tags.cloud, tags.community, tags.projectManagement],
+    recommend: true
   },
   {
     name: '路过图传',
@@ -1643,14 +1662,16 @@ export const mainData = [
     ico: 'https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/static/favicons/favicon-32x32.png',
     url: 'https://juejin.cn/',
     description: '一个很好的开发者社区，可以看看大佬的各种文章',
-    tags: [tags.learning, tags.community]
+    tags: [tags.learning, tags.community],
+    recommend: true
   },
   {
     name: 'CSDN',
     ico: 'https://g.csdnimg.cn/static/logo/favicon32.ico',
     url: 'https://www.csdn.net/',
     description: '各种技术文章都在这里',
-    tags: [tags.learning, tags.community]
+    tags: [tags.learning, tags.community],
+    recommend: true
   },
   {
     name: 'bilibili',
@@ -1685,7 +1706,8 @@ export const mainData = [
     ico: 'https://static.segmentfault.com/main_site_next/dc3490f3/favicon.ico',
     url: 'https://segmentfault.com/',
     description: '技术分享',
-    tags: [tags.learning, tags.community]
+    tags: [tags.learning, tags.community],
+    recommend: true
   },
   {
     name: 'flysheep',
@@ -1713,7 +1735,8 @@ export const mainData = [
     ico: 'https://leetcode.cn/favicon.ico',
     url: 'https://leetcode.cn/',
     description: '算法题就靠它了',
-    tags: [tags.learning, tags.community]
+    tags: [tags.learning, tags.community],
+    recommend: true
   },
   {
     name: 'Shields.io',
@@ -1839,7 +1862,8 @@ export const mainData = [
     ico: '/imgNull.png',
     url: 'https://github.com/lucaong/minisearch',
     description: '小巧而强大的 JavaScript 全文搜索引擎，适用于浏览器和 Node',
-    tags: [tags.development, tags.openSource, tags.web]
+    tags: [tags.development, tags.openSource, tags.web],
+    recommend: true
   },
   {
     name: 'shikijs / shiki',
@@ -1951,7 +1975,8 @@ export const mainData = [
     ico: '/imgNull.png',
     url: 'https://github.com/mattboldt/typed.js',
     description: 'JavaScript 打字动画库',
-    tags: [tags.development, tags.animation, tags.web]
+    tags: [tags.development, tags.animation, tags.web],
+    recommend: true
   },
   {
     name: 'saucxs / captcha-mini',
