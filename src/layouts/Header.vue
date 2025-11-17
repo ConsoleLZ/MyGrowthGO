@@ -151,6 +151,24 @@ export default {
         menuDom.style.display = "none";
         headerDom.style.display = "flex";
       }
+
+      this.loadBusuanzi();
+    },
+    // 不蒜子脚本加载
+    loadBusuanzi() {
+      const script = document.createElement("script");
+      script.src = "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+      script.async = true;
+
+      script.onload = () => {
+        this.$emit('busuanziLoad', true)
+      };
+
+      script.onerror = () => {
+        this.$emit('busuanziLoad', false)
+      };
+
+      document.head.appendChild(script);
     },
     onGoCategory(tag) {
       // location.href = `/category/${tag}`;
@@ -184,7 +202,7 @@ export default {
 }
 
 .header.has-background {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .header > .item {

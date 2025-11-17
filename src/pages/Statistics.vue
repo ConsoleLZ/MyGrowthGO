@@ -1,5 +1,5 @@
 <template>
-  <Header>
+  <Header @busuanziLoad="busuanziLoad">
     <div class="section-header">
       <h2 class="section-title">统计</h2>
       <p class="section-subtitle">勉强看一看站点数据信息吧</p>
@@ -77,25 +77,9 @@ export default {
     };
   },
   methods: {
-    // 不蒜子脚本加载
-    loadBusuanzi() {
-      this.isLoadingVisit = true;
-      const script = document.createElement("script");
-      script.src = "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
-      script.async = true;
-
-      script.onload = () => {
-        this.isLoadingVisit = false;
-      };
-
-      script.onerror = () => {
-        this.isLoadingVisit = false;
-        console.warn("不蒜子服务加载失败");
-      };
-
-      document.head.appendChild(script);
+    busuanziLoad(p){
+      this.isLoadingVisit = !p
     },
-
     // 本站运行时间的计算
     calculateOnlineTime() {
       const startTime = new Date(this.$static.metadata.onlineTime).getTime();
@@ -219,7 +203,6 @@ export default {
     },
   },
   mounted() {
-    this.loadBusuanzi();
     this.calculateOnlineTime();
 
     this.initChart();
