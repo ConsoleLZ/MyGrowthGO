@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'LeaferJS',
+    ico: 'https://www.leaferjs.com/favicon.svg',
+    url: 'https://www.leaferjs.com/',
+    description: '好用的 Canvas 引擎',
+    tags: [tags.web, tags.development]
+  },
+  {
     name: 'mui',
     ico: 'https://mui.com/static/favicon.ico',
     url: 'https://mui.com/',
