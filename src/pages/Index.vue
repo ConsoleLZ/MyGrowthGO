@@ -314,7 +314,7 @@ export default {
   height: var(--size);
   border-radius: var(--size);
   background-repeat: no-repeat;
-  background-size: 66%;
+  background-size: cover;
   background-position: center center;
   background-color: #ffffff;
 }
