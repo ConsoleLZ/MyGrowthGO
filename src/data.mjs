@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'XMSLEEP',
+    ico: '/imgNull.png',
+    url: 'https://github.com/Tosencen/XMSLEEP',
+    description: '这是一个专注于白噪音播放的 Android 应用，提供雨声、篝火、雷声、猫咪呼噜、鸟鸣、夜虫等多种自然声音，帮助你放松、冥想和入睡。',
+    tags: [tags.openSource, tags.other]
+  },
+  {
     name: 'LeaferJS',
     ico: 'https://www.leaferjs.com/favicon.svg',
     url: 'https://www.leaferjs.com/',
