@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'NativeScript',
+    ico: 'https://nativescript.org/favicon-32x32.png',
+    url: 'https://nativescript.org/',
+    description: '渲染原生平台界面，直接访问由TypeScript自动支持的原生API。',
+    tags: [tags.development, tags.openSource]
+  },
+  {
     name: 'XMSLEEP',
     ico: '/imgNull.png',
     url: 'https://github.com/Tosencen/XMSLEEP',
