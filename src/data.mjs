@@ -43,11 +43,19 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'Smoothie Charts',
+    ico: 'http://smoothiecharts.org/favicon.ico',
+    url: 'http://smoothiecharts.org/',
+    description: '用于流数据的JavaScript图表库，做示波器效果很好',
+    tags: [tags.development, tags.web, tags.openSource]
+  },
+  {
     name: 'TDesign',
     ico: 'https://static.tdesign.tencent.com/favicon.ico',
     url: 'https://tdesign.tencent.com/',
     description: '腾讯开源的企业级设计体系，提供了统一价值观，一致的设计语言和视觉风格，和开箱即用的 UI 组件库。致力于为设计师 & 开发者，打造工作美学',
-    tags: [tags.component, tags.web]
+    tags: [tags.component, tags.web, tags.openSource],
+    recommend: true
   },
   {
     name: 'NativeScript',
