@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'TDesign',
+    ico: 'https://static.tdesign.tencent.com/favicon.ico',
+    url: 'https://tdesign.tencent.com/',
+    description: '腾讯开源的企业级设计体系，提供了统一价值观，一致的设计语言和视觉风格，和开箱即用的 UI 组件库。致力于为设计师 & 开发者，打造工作美学',
+    tags: [tags.component, tags.web]
+  },
+  {
     name: 'NativeScript',
     ico: 'https://nativescript.org/favicon-32x32.png',
     url: 'https://nativescript.org/',
