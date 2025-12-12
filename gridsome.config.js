@@ -7,6 +7,5 @@
 module.exports = {
   siteName: '小哲的个人导航网站',
   siteDescription: '收录学习和工作过程中遇到的优质项目或者网站',
-  icon: 'favicon.ico',
   plugins: []
 }

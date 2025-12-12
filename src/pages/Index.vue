@@ -4,10 +4,10 @@
       <div
         style="display: flex;align-items: center;gap: 15px;margin-bottom: 20px;"
       >
-        <div
+        <!-- <div
           class="avatar"
           :style="'background-image: url(' + $static.metadata.avatar + ')'"
-        ></div>
+        ></div> -->
         <div class="title">{{ $static.metadata.title }}</div>
       </div>
 
