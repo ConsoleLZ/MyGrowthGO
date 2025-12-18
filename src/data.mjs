@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'Wails',
+    ico: 'https://wails.io/zh-Hans/img/favicon.ico',
+    url: 'https://wails.io/zh-Hans/',
+    description: '使用 Go 构建漂亮的跨平台应用程序',
+    tags: [tags.development, tags.openSource]
+  },
+  {
     name: 'Smoothie Charts',
     ico: 'http://smoothiecharts.org/favicon.ico',
     url: 'http://smoothiecharts.org/',
