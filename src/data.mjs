@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: '菜鸟教程',
+    ico: 'https://caijiao.org/favicon.ico',
+    url: 'https://caijiao.org/',
+    description: '菜鸟教程官网是面向初学者的编程学习平台，覆盖 HTML、CSS、JS、Python、数据库等主流技术',
+    tags: [tags.learning]
+  },
+  {
     name: 'Wails',
     ico: 'https://wails.io/zh-Hans/img/favicon.ico',
     url: 'https://wails.io/zh-Hans/',
