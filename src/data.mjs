@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'Alpine.js',
+    ico: 'https://alpinejs.dev/favicon.png',
+    url: 'https://alpinejs.dev/',
+    description: '这是一个轻量级、极简的 JavaScript 框架，专为前端交互设计，提供类似 Vue 的声明式语法，但无需构建工具，可直接在 HTML 中使用。适用于为静态页面增强交互体验，如表单处理、模态框、手风琴菜单等，既解决了 jQuery 繁琐的 DOM 操作，又避免了 Vue/React 等框架的复杂性和性能开销，非常适合前后端分离的轻量级项目或仅需少量动态行为的页面。',
+    tags: [tags.web, tags.development]
+  },
+  {
     name: '菜鸟教程',
     ico: 'https://caijiao.org/favicon.ico',
     url: 'https://caijiao.org/',
