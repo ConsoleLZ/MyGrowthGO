@@ -43,6 +43,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: '像素实验室',
+    ico: 'https://pixlab24.com/wp-content/uploads/2024/01/icon.png',
+    url: 'https://pixlab24.com/',
+    description: 'pixlab24像素实验室是一个专门为独立游戏爱好者提供免费游戏素材的下载网站,免费各种类型的2D像素素材和3D游戏资产，包括像素人物，物品，像素游戏背景，地图，人物动画，游戏界面UI等游戏素材！为你的像素或2D游戏开发提供素材！',
+    tags: [tags.resources]
+  },
+  {
     name: 'Alpine.js',
     ico: 'https://alpinejs.dev/favicon.png',
     url: 'https://alpinejs.dev/',
