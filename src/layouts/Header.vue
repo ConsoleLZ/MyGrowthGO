@@ -171,6 +171,7 @@ export default {
   top: 0;
   background-color: transparent;
   transition: background-color 0.3s ease;
+  z-index: 999;
 }
 
 .header.has-background {
