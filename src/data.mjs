@@ -1,7 +1,5 @@
 // 所有的标签
 export const tags = {
-  all: '全部',
-  
   // 开发技术
   web: '前端',
   development: '开发',

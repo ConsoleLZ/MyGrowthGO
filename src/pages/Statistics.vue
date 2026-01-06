@@ -1,52 +1,57 @@
 <template>
   <Header @busuanziLoad="busuanziLoad">
-    <div class="section-header">
-      <h2 class="section-title">统计</h2>
-      <p class="section-subtitle">勉强看一看站点数据信息吧</p>
-    </div>
+    <div style="width: 100%;overflow: hidden;">
+      <div class="section-header">
+        <h2 class="section-title">统计</h2>
+        <p class="section-subtitle">勉强看一看站点数据信息吧</p>
+      </div>
 
-    <el-row :gutter="20">
-      <el-col :xs="24" :sm="12" :md="6">
-        <div>
-          <el-statistic :value="allLength" title="收录总数"></el-statistic>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <div>
-          <el-statistic :value="tagLength - 1" title="分类总数"></el-statistic>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <div>
-          <el-statistic title="本站访问量">
-            <template #formatter>
-              <span
-                v-loading="isLoadingVisit"
-                element-loading-spinner="el-icon-loading"
-                id="busuanzi_value_site_pv"
-              ></span>
-            </template>
-          </el-statistic>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <div>
-          <el-statistic title="本站运行时间">
-            <template #formatter>
-              <span>{{ runtimeText }}</span>
-            </template>
-          </el-statistic>
-        </div>
-      </el-col>
-    </el-row>
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="12" :md="6">
+          <div>
+            <el-statistic :value="allLength" title="收录总数"></el-statistic>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="6">
+          <div>
+            <el-statistic
+              :value="tagLength - 1"
+              title="分类总数"
+            ></el-statistic>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="6">
+          <div>
+            <el-statistic title="本站访问量">
+              <template #formatter>
+                <span
+                  v-loading="isLoadingVisit"
+                  element-loading-spinner="el-icon-loading"
+                  id="busuanzi_value_site_pv"
+                ></span>
+              </template>
+            </el-statistic>
+          </div>
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="6">
+          <div>
+            <el-statistic title="本站运行时间">
+              <template #formatter>
+                <span>{{ runtimeText }}</span>
+              </template>
+            </el-statistic>
+          </div>
+        </el-col>
+      </el-row>
 
-    <div class="charts-container">
-      <div class="chart-wrapper">
-        <div
-          ref="chartRef"
-          class="chart"
-          style="width: 100%; height: 400px;"
-        ></div>
+      <div class="charts-container">
+        <div class="chart-wrapper">
+          <div
+            ref="chartRef"
+            class="chart"
+            style="width: 100%; height: 400px;"
+          ></div>
+        </div>
       </div>
     </div>
   </Header>
@@ -77,8 +82,8 @@ export default {
     };
   },
   methods: {
-    busuanziLoad(p){
-      this.isLoadingVisit = !p
+    busuanziLoad(p) {
+      this.isLoadingVisit = !p;
     },
     // 本站运行时间的计算
     calculateOnlineTime() {
@@ -207,15 +212,15 @@ export default {
 
     this.initChart();
 
-      // 监听窗口大小变化
-      window.addEventListener("resize", this.handleResize);
+    // 监听窗口大小变化
+    window.addEventListener("resize", this.handleResize);
 
-      if (this.$refs.chartRef) {
-        this.resizeObserver = new ResizeObserver(() => {
-          this.handleResize();
-        });
-        this.resizeObserver.observe(this.$refs.chartRef);
-      }
+    if (this.$refs.chartRef) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.handleResize();
+      });
+      this.resizeObserver.observe(this.$refs.chartRef);
+    }
   },
   beforeUnmount() {
     // 清理定时器

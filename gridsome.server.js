@@ -27,39 +27,4 @@ module.exports = function (api) {
       }
     })
   })
-
-  api.createPages(({ createPage }) => {
-    createPage({
-      path: '/category/:tag',
-      component: './src/pages/Category.vue'
-    })
-  })
-
-  api.afterBuild(({ redirects }) => {
-    const redirectRules = [];
-
-    for (const rule of redirects) {
-      if (rule.status === 200) {
-        // 将 /category/:tag 转为 /category/* 语法（适用于 Netlify/Fleek/CF Pages）
-        const from = rule.from.replace(/:[a-zA-Z0-9_]+/g, '*');
-        const to = rule.to;
-        redirectRules.push(`${from} ${to} 200`);
-      }
-    }
-
-    // 写入 _redirects 文件到 dist 目录(解决部署的时候，动态路由404问题)
-    const redirectsContent = redirectRules.join('\n');
-    const outputPath = path.join(__dirname, 'dist', '_redirects');
-    fs.writeFileSync(outputPath, redirectsContent, 'utf8');
-
-    // 生成Nginx配置
-    if (process.env.GENERATE_NGINX_RULES === 'true') {
-      const { execSync } = require('child_process');
-      try {
-        execSync('node scripts/generate-nginx-rules.js', { stdio: 'inherit' });
-      } catch (e) {
-        console.error('生成nginx规则失败:', e.message);
-      }
-    }
-  });
 }

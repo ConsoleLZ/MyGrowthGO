@@ -3,9 +3,6 @@
 
 import HeaderLayout from "~/layouts/Header.vue";
 import {
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
   Tooltip,
   Tag,
   Row,
@@ -18,7 +15,9 @@ import {
   Submenu,
   Popover,
   Empty,
-  Pagination
+  Pagination,
+  Checkbox,
+  CheckboxGroup
 } from "element-ui";
 import "~/assets/css/index.css";
 
@@ -34,9 +33,8 @@ export default function(Vue, { router, head, isClient }) {
   }
   head.htmlAttrs = { lang: "zh-CN" };
   Vue.component("Header", HeaderLayout);
-  Vue.use(Dropdown);
-  Vue.use(DropdownMenu);
-  Vue.use(DropdownItem);
+  Vue.use(Checkbox);
+  Vue.use(CheckboxGroup);
   Vue.use(Tooltip);
   Vue.use(Tag);
   Vue.use(Row);

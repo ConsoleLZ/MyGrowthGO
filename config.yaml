@@ -28,6 +28,10 @@ quickAccess:
     description: 深度求索（DeepSeek）
     icon: https://www.deepseek.com/favicon.ico
     url: https://chat.deepseek.com/
+  - name: Snapdrop
+    description: 局域网文件传输
+    icon: https://drop.ioiox.com/images/favicon-96x96.png
+    url: https://drop.ioiox.com/
 
 # 首页底部的友情链接
 friendLink:

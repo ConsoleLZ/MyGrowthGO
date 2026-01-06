@@ -1,5 +1,6 @@
 <template>
   <div class="card-container">
+    <slot></slot>
     <div class="card-grid">
       <div
         class="card"
@@ -23,6 +24,9 @@
         <el-tooltip :content="item.description" placement="top">
           <div class="description">{{ item.description }}</div>
         </el-tooltip>
+        <div class="card-like" v-if="item.recommend">
+          <img src="@/assets/images/like.png" width="24px" alt="">
+        </div>
       </div>
     </div>
 
@@ -119,6 +123,13 @@ export default {
   display: flex;
   flex-direction: column;
   height: 115px;
+  position: relative;
+}
+
+.card-like {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .card-header {
@@ -159,19 +170,6 @@ export default {
 .card-content {
   margin-bottom: 12px;
   flex: 1;
-}
-
-.description {
-  margin: 0;
-  font-size: 13px;
-  color: #303133;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  width: fit-content;
 }
 
 .card-tags {
