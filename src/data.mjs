@@ -41,6 +41,20 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'shadcn/ui-vue',
+    ico: 'https://www.shadcn-vue.com/favicon-16x16.png',
+    url: 'https://www.shadcn-vue.com/',
+    description: 'shadcn/ui的vue版本',
+    tags: [tags.web, tags.component]
+  },
+  {
+    name: 'shadcn/ui',
+    ico: 'https://ui.shadcn.com/favicon.ico',
+    url: 'https://ui.shadcn.com/',
+    description: '一组设计精美的组件，你可以自定义、扩展和扩展。从这里开始，然后打造属于你自己的风格。',
+    tags: [tags.web, tags.component]
+  },
+  {
     name: '像素实验室',
     ico: 'https://pixlab24.com/wp-content/uploads/2024/01/icon.png',
     url: 'https://pixlab24.com/',
