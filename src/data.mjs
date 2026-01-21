@@ -41,6 +41,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'scqilin / phone-ui-vue',
+    ico: '/imgNull.png',
+    url: 'https://github.com/scqilin/phone-ui-vue',
+    description: '一个专为 Vue 3 设计的手机外观组件库，使用 TypeScript 开发，支持多机型预设和完全自定义外观。',
+    tags: [tags.web, tags.development]
+  },
+  {
     name: 'shadcn/ui-vue',
     ico: 'https://www.shadcn-vue.com/favicon-16x16.png',
     url: 'https://www.shadcn-vue.com/',
