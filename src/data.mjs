@@ -41,6 +41,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'Genymobile / scrcpy',
+    ico: '/imgNull.png',
+    url: 'https://github.com/Genymobile/scrcpy',
+    description: '用于使计算机用户能通过android ADB或通过USB数据线控制其Android设备，实现手机投屏',
+    tags: [tags.tools]
+  },
+  {
     name: 'scqilin / phone-ui-vue',
     ico: '/imgNull.png',
     url: 'https://github.com/scqilin/phone-ui-vue',
