@@ -41,6 +41,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'vladelaina / Catime',
+    ico: 'https://vladelaina.github.io/Catime/assets/catime.webp',
+    url: 'https://github.com/vladelaina/Catime',
+    description: '一个小巧（803KB）但强大的纯C计时器。支持时钟、倒计时、秒表、番茄钟，以及完全可自定义的托盘动画（GIF、CPU/内存%） 💘',
+    tags: [tags.tools]
+  },
+  {
     name: 'Genymobile / scrcpy',
     ico: '/imgNull.png',
     url: 'https://github.com/Genymobile/scrcpy',
