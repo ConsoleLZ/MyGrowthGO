@@ -41,6 +41,13 @@ const baseURL = '/'
 
 export const mainData = [
   {
+    name: 'originalankur / maptoposter',
+    ico: '/imgNull.png',
+    url: 'https://github.com/originalankur/maptoposter',
+    description: '将你喜爱的城市转变为美丽、极简的设计。MapToPoster 允许你用代码创建并导出视觉冲击力强的地图海报。',
+    tags: [tags.other, tags.openSource]
+  },
+  {
     name: 'vladelaina / Catime',
     ico: 'https://vladelaina.github.io/Catime/assets/catime.webp',
     url: 'https://github.com/vladelaina/Catime',
