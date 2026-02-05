@@ -8,7 +8,6 @@ export const tags = {
   lowCode: "低代码",
   microFrontend: "微前端",
   dataViz: "数据可视化",
-  editor: "富文本编辑器",
 
   // 工具资源
   tools: "工具",
@@ -2140,7 +2139,7 @@ export const mainData = [
     url: "https://github.com/Vanessa219/vditor",
     description:
       "♏ 一款浏览器端的 Markdown 编辑器，支持所见即所得（富文本）、即时渲染（类似 Typora）和分屏预览模式。An In-browser Markdown editor, support WYSIWYG (Rich Text), Instant Rendering (Typora-like) and Split View modes.",
-    tags: [tags.development, tags.openSource, tags.web, tags.editor]
+    tags: [tags.development, tags.openSource, tags.web]
   },
   {
     name: "VincentGarreau / particles.js",
@@ -2182,7 +2181,7 @@ export const mainData = [
     ico: "/imgNull.png",
     url: "https://github.com/wangeditor-team/wangEditor",
     description: "开源 Web 富文本编辑器",
-    tags: [tags.development, tags.openSource, tags.web, tags.editor]
+    tags: [tags.development, tags.openSource, tags.web]
   },
   {
     name: "umijs / qiankun",
@@ -2242,13 +2241,6 @@ export const mainData = [
     description:
       "captcha-mini.js是一个生成验证码的插件，使用js和canvas生成的，确保后端服务被暴力攻击，简单判断人机以及系统的安全性，体积小，功能多，支持配置",
     tags: [tags.development, tags.openSource, tags.web, tags.security]
-  },
-  {
-    name: "wangeditor-team / wangEditor",
-    ico: "/imgNull.png",
-    url: "https://github.com/wangeditor-team/wangEditor",
-    description: "开源 Web 富文本编辑器",
-    tags: [tags.development, tags.openSource, tags.web, tags.editor]
   },
   {
     name: "megasanjay / vue3-marquee",
