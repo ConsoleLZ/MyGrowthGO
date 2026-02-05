@@ -9,7 +9,7 @@ export const tags = {
   microFrontend: '微前端',
   dataViz: '数据可视化',
   editor: '富文本编辑器',
-  
+
   // 工具资源
   tools: '工具',
   design: '设计',
@@ -17,20 +17,21 @@ export const tags = {
   projectManagement: '项目管理',
   animation: '动画',
   physics: '物理引擎',
-  
+  editor: '代码编辑器'
+
   // 技术领域
   ai: 'AI',
   hardware: '硬件',
   game: '游戏',
   security: '安全',
   modeling: '3D建模',
-  
+
   // 平台社区
   community: '社区',
   cloud: '云平台',
   learning: '学习',
   openSource: '开源',
-  
+
   // 其他分类
   icon: '图标',
   plugin: '插件',
@@ -40,6 +41,20 @@ export const tags = {
 const baseURL = '/'
 
 export const mainData = [
+  {
+    name: 'VS code',
+    ico: 'https://code.visualstudio.com/assets/favicon.ico',
+    url: 'https://code.visualstudio.com/',
+    description: '一款生态丰富的代码编辑器，有很多好用、好玩的插件',
+    tags: [tags.tools, tags.editor]
+  },
+  {
+    name: 'Zed',
+    ico: 'https://zed.dev/favicon_black_32.png',
+    url: 'https://zed.dev/',
+    description: 'Zed 是一款极简代码编辑器，专为速度和与人类及人工智能的协作而设计。',
+    tags: [tags.tools, tags.editor]
+  },
   {
     name: 'originalankur / maptoposter',
     ico: '/imgNull.png',
@@ -358,7 +373,7 @@ export const mainData = [
     ico: 'https://pic1.imgdb.cn/item/6893023d58cb8da5c8095dcd.png',
     url: 'https://www.jetbrains.com/clion/',
     description: '用于 C 和 C++ 的跨平台 IDE',
-    tags: [tags.tools]
+    tags: [tags.tools, tags.editor]
   },
   {
     name: 'Remix Icon',
@@ -754,7 +769,7 @@ export const mainData = [
     ico: `https://www.cursor.com/favicon.ico`,
     url: 'https://www.cursor.com/',
     description: 'Cursor 旨在让您非常高效，是使用 AI 进行编码的最佳方式',
-    tags: [tags.tools, tags.ai]
+    tags: [tags.tools, tags.editor]
   },
   {
     name: 'typicode / json-server',
