@@ -39,13 +39,15 @@ export const tags = {
 
 const baseURL = "/";
 
+// recommend: true
 export const mainData = [
   {
     name: "VS code",
     ico: "https://code.visualstudio.com/assets/favicon.ico",
     url: "https://code.visualstudio.com/",
     description: "一款生态丰富的代码编辑器，有很多好用、好玩的插件",
-    tags: [tags.tools, tags.editor]
+    tags: [tags.tools, tags.editor],
+    recommend: true
   },
   {
     name: "Zed",
