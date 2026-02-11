@@ -34,6 +34,7 @@ export const tags = {
   // 其他分类
   icon: "图标",
   plugin: "插件",
+  amusement: "娱乐",
   other: "其他"
 };
 
@@ -41,6 +42,13 @@ const baseURL = "/";
 
 // recommend: true
 export const mainData = [
+  {
+    name: "Predidit / Kazumi",
+    ico: "/imgNull.png",
+    url: "https://github.com/Predidit/Kazumi",
+    description: "基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕，支持实时超分辨率。",
+    tags: [tags.amusement]
+  },
   {
     name: "VS code",
     ico: "https://code.visualstudio.com/assets/favicon.ico",
@@ -556,7 +564,7 @@ export const mainData = [
     url: "https://www.seedhub.cc/",
     description:
       "每天为您分享优质的电影、电视剧和动漫资讯。免费分享，无需注册，更新及时，我们致力打造最好的影视资讯分享站！",
-    tags: [tags.other]
+    tags: [tags.amusement]
   },
   {
     name: "MAX动漫",
@@ -564,7 +572,7 @@ export const mainData = [
     url: "https://www.mxdm6.com/",
     description:
       "MX动漫提供最新最快的在线观看动漫番剧资源，在线观看完全免费、无须注册、高速播放、更新及时的专业在线动漫网站，是樱花动漫外最好打的备用动漫网站。",
-    tags: [tags.other]
+    tags: [tags.amusement]
   },
   {
     name: "BongoCat",
@@ -2486,7 +2494,7 @@ export const mainData = [
     ico: "/imgNull.png",
     url: "https://github.com/Java-S12138/frank",
     description: "全新的英雄联盟助手软件，WeGame 的替代品",
-    tags: [tags.other]
+    tags: [tags.amusement]
   },
   {
     name: "Blankj / awesome-comment",
