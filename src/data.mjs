@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "古文岛",
+    ico: "https://www.gushiwen.cn/favicon.ico",
+    url: "https://www.gushiwen.cn/",
+    description: "古文岛作为传承经典的网站专注于古诗服务，致力于让古诗爱好者更便捷地发表及获取古诗相关资料。",
+    tags: [tags.learning]
+  },
+  {
     name: "ChatUI",
     ico: "https://gw.alicdn.com/tfs/TB17TaySSzqK1RjSZFHXXb3CpXa-80-80.svg",
     url: "https://chatui.io/",
