@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "ChatUI",
+    ico: "https://gw.alicdn.com/tfs/TB17TaySSzqK1RjSZFHXXb3CpXa-80-80.svg",
+    url: "https://chatui.io/",
+    description: "助力设计开发者搭建「对话式交互」，让科技更有温度，对话美而简单～",
+    tags: [tags.web, tags.component]
+  },
+  {
     name: "Predidit / Kazumi",
     ico: "/imgNull.png",
     url: "https://github.com/Predidit/Kazumi",
