@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "docsify",
+    ico: "https://docsify.js.org/_media/favicon.ico",
+    url: "https://docsify.js.org/#/zh-cn/",
+    description: "一个神奇的文档网站生成器。",
+    tags: [tags.web, tags.development]
+  },
+  {
     name: "古文岛",
     ico: "https://www.gushiwen.cn/favicon.ico",
     url: "https://www.gushiwen.cn/",
