@@ -182,7 +182,7 @@ export default {
   transition: all var(--transition-normal);
   background-color: transparent;
   backdrop-filter: blur(0px);
-  height: 70px;
+  height: 60px;
 }
 
 .header-scrolled {
