@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "trae",
+    ico: "https://lf-cdn.trae.com.cn/obj/trae-com-cn/trae_website_prod_cn/favicon.png",
+    url: "https://www.trae.cn/",
+    description: "TRAE ，一个能理解需求、调动工具、独立完成各类开发任务的超级 AI 开发工程师，助你高效推进项目每一步。",
+    tags: [tags.tools, tags.editor, tags.ai]
+  },
+  {
     name: "docsify",
     ico: "https://docsify.js.org/_media/favicon.ico",
     url: "https://docsify.js.org/#/zh-cn/",
