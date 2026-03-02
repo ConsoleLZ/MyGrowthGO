@@ -528,7 +528,6 @@ export default {
 
 .popover-item:hover {
   background-color: rgba(35, 141, 247, 0.1);
-  transform: translateX(5px);
 }
 
 .popover-item-icon {
