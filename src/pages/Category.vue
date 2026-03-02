@@ -1,24 +1,29 @@
 <template>
   <Header>
-    <CardListComp :cardListData="filteredCardData">
-      <el-checkbox
-        :indeterminate="isIndeterminate"
-        v-model="checkAll"
-        @change="handleCheckAllChange"
-        >全选</el-checkbox
-      >
-      <div style="margin: 15px 0;"></div>
-      <el-checkbox-group v-model="tagsSelect" @change="handleCheckedTagChange">
+    <div style="overflow: hidden;">
+      <CardListComp :cardListData="filteredCardData">
         <el-checkbox
-          v-for="tag in Object.keys(tagsOptions)"
-          :label="tag"
-          :key="tag"
-          >{{ tagsOptions[tag] }}</el-checkbox
+          :indeterminate="isIndeterminate"
+          v-model="checkAll"
+          @change="handleCheckAllChange"
+          >全选</el-checkbox
         >
-      </el-checkbox-group>
-      <br>
-      <br>
-    </CardListComp>
+        <div style="margin: 15px 0;"></div>
+        <el-checkbox-group
+          v-model="tagsSelect"
+          @change="handleCheckedTagChange"
+        >
+          <el-checkbox
+            v-for="tag in Object.keys(tagsOptions)"
+            :label="tag"
+            :key="tag"
+            >{{ tagsOptions[tag] }}</el-checkbox
+          >
+        </el-checkbox-group>
+        <br />
+        <br />
+      </CardListComp>
+    </div>
   </Header>
 </template>
 
@@ -47,8 +52,10 @@ export default {
       }
       return this.cardData.filter((item) =>
         item.tags.some((tag) => {
-          return this.tagsSelect.includes(Object.keys(tags).find((item) => tags[item] === tag));
-        })
+          return this.tagsSelect.includes(
+            Object.keys(tags).find((item) => tags[item] === tag),
+          );
+        }),
       );
     },
   },

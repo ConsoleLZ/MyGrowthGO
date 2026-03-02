@@ -30,6 +30,29 @@ export default function(Vue, { router, head, isClient }) {
       meta.content = "width=device-width, initial-scale=1";
       document.head.appendChild(meta);
     }
+    
+    // 滚动动画逻辑
+    Vue.directive('scroll-reveal', {
+      inserted: function(el) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              el.classList.add('active');
+              observer.unobserve(el);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        
+        observer.observe(el);
+      }
+    });
+    
+    // 页面加载动画
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
   }
   head.htmlAttrs = { lang: "zh-CN" };
   Vue.component("Header", HeaderLayout);

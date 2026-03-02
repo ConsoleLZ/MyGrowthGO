@@ -3,10 +3,12 @@
     <slot></slot>
     <div class="card-grid">
       <div
-        class="card"
-        v-for="item in paginationData"
+        class="card scroll-reveal"
+        v-for="(item, index) in paginationData"
         :key="item.url"
         @click="openLink(item.url)"
+        v-scroll-reveal
+        :style="{ animationDelay: index * 0.05 + 's' }"
       >
         <div class="card-header">
           <div class="card-icon">
@@ -14,10 +16,13 @@
           </div>
           <div class="card-title">
             <h3>{{ item.name }}</h3>
-            <div style="display: flex;align-items: center;gap: 5px;">
-              <el-tag size="mini" v-for="tag in item.tags" :key="tag">{{
-                tag
-              }}</el-tag>
+            <div class="card-tags">
+              <el-tag 
+                size="mini" 
+                v-for="tag in item.tags" 
+                :key="tag"
+                class="card-tag"
+              >{{ tag }}</el-tag>
             </div>
           </div>
         </div>
@@ -30,16 +35,17 @@
       </div>
     </div>
 
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="total"
-      :page-size="$static.metadata.paginationValue"
-      hide-on-single-page
-      style="display: flex;justify-content: center;"
-      @current-change="onChangePage"
-    >
-    </el-pagination>
+    <div class="pagination-container">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="total"
+        :page-size="$static.metadata.paginationValue"
+        hide-on-single-page
+        @current-change="onChangePage"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -104,51 +110,86 @@ export default {
 .card-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 15px;
+  padding: var(--space-6);
 }
+
 /* 推荐内容网格 */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  transition: all 0.3s ease;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  transition: all var(--transition-normal);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 115px;
+  min-height: 140px;
   position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--transition-normal);
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .card-like {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: var(--space-4);
+  top: var(--space-4);
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .card-like {
+  transform: scale(1.1);
 }
 
 .card-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .card-icon {
-  width: 35px;
-  height: 35px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f4f4f4;
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-xl);
   flex-shrink: 0;
-  padding: 8px;
+  padding: var(--space-3);
+  transition: all var(--transition-normal);
+}
+
+.card:hover .card-icon {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
 }
 
 .card-title {
@@ -157,84 +198,77 @@ export default {
 }
 
 .card-title h3 {
-  margin: 0 0 6px 0;
-  font-size: 16px;
+  margin: 0 0 var(--space-2) 0;
+  font-size: var(--text-lg);
   font-weight: 600;
-  color: #000000;
+  color: var(--text-primary);
   line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.card-content {
-  margin-bottom: 12px;
-  flex: 1;
-}
-
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
-/* 加载更多 */
-.load-more {
-  text-align: center;
-  font-size: 14px;
-  color: #303133;
-  cursor: pointer;
-  padding: 15px;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  margin-top: 20px;
+.card-tag {
+  font-size: var(--text-xs) !important;
+  border-radius: var(--radius-full) !important;
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: var(--primary) !important;
+  border: none !important;
 }
 
-.load-more:hover {
-  background: #a0cfff;
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
 }
 
 /* 响应式调整 */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .card-container {
-    padding: 0 15px;
+    padding: var(--space-4);
   }
+  
   .card-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: var(--space-4);
   }
 
   .card {
-    padding: 16px;
-    min-height: 140px;
+    padding: var(--space-4);
+    min-height: 120px;
   }
 
   .card-header {
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
   }
 
   .card-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 
   .card-title h3 {
-    font-size: 15px;
+    font-size: var(--text-base);
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
   }
+}
 
-  .card {
-    min-height: auto;
-  }
-
-  .card-header {
-    align-items: center;
+@media (min-width: 1025px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 </style>

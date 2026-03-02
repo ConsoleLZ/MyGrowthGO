@@ -1,101 +1,113 @@
 <template>
   <Header>
-    <div class="site-info">
-      <div
-        style="display: flex;align-items: center;gap: 15px;margin-bottom: 20px;"
-      >
-        <div class="title">{{ $static.metadata.title }}</div>
-      </div>
-
-      <el-popover
-        placement="bottom-start"
-        width="300"
-        v-model="visiblePopover"
-        trigger="manual"
-        :visible-arrow="false"
-      >
-        <div class="popover" v-if="searchData.length">
-          <div class="popover-item" v-for="item in searchData" :key="item.url" @click="openLink(item.url)">
-            <img
-              :src="item.ico"
-              width="20px"
-              alt=""
-            />
-            <div>
-              <div style="font-size: 14px;color: #303133;">
-                {{ item.name }}
-              </div>
-              <div class="description" style="color: #909399;">{{ item.description }}</div>
+    <div class="index-page">
+      <div class="hero-section">
+        <div class="site-info">
+          <div class="hero-content">
+            <div class="avatar-container">
+              <!-- <div
+                class="avatar"
+                :style="{ 'background-image': 'url(' + $static.metadata.avatar + ')' }"
+              ></div> -->
             </div>
+            <h1 class="title">{{ $static.metadata.title }}</h1>
+            <p class="sub-title">{{ $static.metadata.subTitle }}</p>
           </div>
-        </div>
-        <el-empty v-else image="/empty.png" :image-size="64"></el-empty>
-        <div slot="reference">
-          <!-- 搜索框和下拉菜单 -->
-          <div class="search-container">
-            <div class="search">
-              <div class="icon" @click="toggleDropdown">
-                <img :src="currentEngine.icon" width="20px" alt="" />
-              </div>
-              <input
-                class="input"
-                :placeholder="currentEngine.placeholder"
-                type="text"
-                @keyup.enter="performSearch"
-                @blur="visiblePopover = false"
-              />
-            </div>
-            <!-- 下拉菜单放在搜索容器外部 -->
-            <div class="dropdown" v-show="showDropdown">
-              <div
-                class="dropdown-item"
-                v-for="engine in searchEngines"
-                :key="engine.name"
-                @click="selectEngine(engine)"
-              >
-                <img :src="engine.icon" width="16px" alt="" />
-                <span>{{ engine.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </el-popover>
 
-      <div class="sub-title">{{ $static.metadata.subTitle }}</div>
-    </div>
-
-    <div class="main-content">
-      <div class="quick-access">
-        <div class="card-grid">
-          <div
-            class="nav-card"
-            v-for="item in JSON.parse($static.metadata.quickAccess)"
-            :key="item.url"
-            @click="openLink(item.url)"
+          <el-popover
+            placement="bottom-start"
+            width="320"
+            v-model="visiblePopover"
+            trigger="manual"
+            :visible-arrow="false"
+            popper-class="custom-popover"
           >
-            <div class="card-icon">
-              <img :src="item.icon" width="36px" alt="" />
+            <div class="popover-content" v-if="searchData.length">
+              <div 
+                class="popover-item" 
+                v-for="item in searchData" 
+                :key="item.url" 
+                @click="openLink(item.url)"
+              >
+                <img :src="item.ico" width="24px" alt="" class="popover-item-icon" />
+                <div class="popover-item-content">
+                  <div class="popover-item-title">{{ item.name }}</div>
+                  <div class="description">{{ item.description }}</div>
+                </div>
+              </div>
             </div>
-            <div class="card-content">
-              <h3>{{ item.name }}</h3>
-              <p>{{ item.description }}</p>
+            <el-empty v-else image="/empty.png" :image-size="64"></el-empty>
+            <div slot="reference">
+              <!-- 搜索框和下拉菜单 -->
+              <div class="search-container">
+                <div class="search-input-wrapper">
+                  <div class="search-icon" @click="toggleDropdown">
+                    <img :src="currentEngine.icon" width="20px" alt="" />
+                  </div>
+                  <input
+                    class="search-input"
+                    :placeholder="currentEngine.placeholder"
+                    type="text"
+                    @keyup.enter="performSearch"
+                    @blur="visiblePopover = false"
+                  />
+                </div>
+                <!-- 下拉菜单 -->
+                <div class="search-dropdown" v-show="showDropdown">
+                  <div
+                    class="dropdown-item"
+                    v-for="engine in searchEngines"
+                    :key="engine.name"
+                    @click="selectEngine(engine)"
+                  >
+                    <img :src="engine.icon" width="18px" alt="" class="dropdown-item-icon" />
+                    <span class="dropdown-item-text">{{ engine.name }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </el-popover>
         </div>
       </div>
-    </div>
 
-    <div class="friend-links">
-      <div class="friend-links-wrapper">
-        <a
-          :href="item.url"
-          target="_blank"
-          v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
-          :key="index"
-          class="friend-link"
-          >{{ item.name }}</a
-        >
+      <div class="main-content">
+        <section class="quick-access-section scroll-reveal" v-scroll-reveal>
+          <h2 class="section-title">快速访问</h2>
+          <div class="card-grid">
+            <div
+              class="quick-card scroll-reveal"
+              v-for="(item, index) in JSON.parse($static.metadata.quickAccess)"
+              :key="item.url"
+              @click="openLink(item.url)"
+              v-scroll-reveal
+              :style="{ animationDelay: index * 0.1 + 's' }"
+            >
+              <div class="card-icon">
+                <img :src="item.icon" width="36px" alt="" />
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{{ item.name }}</h3>
+                <p class="card-description">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="friend-links">
+            <a
+              :href="item.url"
+              target="_blank"
+              v-for="(item, index) in JSON.parse($static.metadata.friendLink)"
+              :key="index"
+              class="friend-link"
+              >{{ item.name }}</a
+            >
+          </div>
+        </div>
+      </footer>
     </div>
   </Header>
 </template>
@@ -115,8 +127,12 @@ query {
 <script>
 import MiniSearch from "minisearch";
 import { mainData } from "@/data.mjs";
+import Header from "@/layouts/Header.vue";
 
 export default {
+  components: {
+    Header
+  },
   metaInfo: {
     title: "首页",
   },
@@ -294,304 +310,207 @@ export default {
 </script>
 
 <style scoped>
-.site-info {
-  width: 100%;
-  height: fit-content;
+.index-page {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin: 70px 0 40px 0;
 }
 
-.avatar {
-  --size: 4rem;
-  width: var(--size);
-  height: var(--size);
-  border-radius: var(--size);
-  background-repeat: no-repeat;
-  background-size: 66%;
-  background-position: center center;
-  background-color: #ffffff;
-}
-
-.title {
-  font-weight: 700;
-  font-size: 28px;
-  color: #000000;
-  cursor: default;
-}
-
-.sub-title {
-  font-size: 14px;
-  text-align: center;
-  margin: 0 20px;
-  color: #303133;
-}
-
-/* 新增内容样式 */
-.main-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px 40px 20px;
-  margin-top: 4rem;
-}
-
-.section-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 40px 0 20px 0;
-  text-align: center;
-}
-
-/* 快速访问卡片网格 */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.nav-card {
-  /* background: white; */
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  color: #000;
-}
-
-.nav-card:hover {
-  transform: translateY(-2px);
-}
-
-.card-icon {
-  font-size: 24px;
-  width: 50px;
-  height: 50px;
+.hero-section {
+  padding: var(--space-16) var(--space-6);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--background) 0%, #f0f0f0 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.card-content h3 {
-  margin: 0 0 5px 0;
-  font-size: 16px;
-  font-weight: 600;
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
+  animation: float 20s ease-in-out infinite;
 }
 
-.card-content p {
-  margin: 0;
-  font-size: 12px;
-  color: #606266;
-  line-height: 1.4;
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(5%, 5%) rotate(180deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
 }
 
-.friend-links {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 8px 0;
-  background: #f0f0f0;
-  z-index: 1000;
-  overflow-x: auto;
-  overflow-y: hidden;
+.site-info {
   text-align: center;
-  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  width: 100%;
 }
 
-/* 隐藏滚动条轨道（可选） */
-.friend-links::-webkit-scrollbar {
-  display: none;
+.hero-content {
+  margin-bottom: var(--space-10);
 }
 
-.friend-links-wrapper {
-  display: inline-block;
-  padding: 0 16px;
-  min-width: 100%;
-  white-space: nowrap;
-  box-sizing: border-box;
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-6);
 }
 
-.friend-link {
-  display: inline-block;
-  font-size: 12px;
-  color: #303133;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  margin: 0 7.5px;
+.avatar {
+  --size: 8rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--radius-full);
+  background-repeat: no-repeat;
+  background-size: 66%;
+  background-position: center center;
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  border: 4px solid var(--card-bg);
 }
 
-.friend-link:hover {
-  color: #238df7;
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
 }
 
-/* 移除原来的footer样式 */
-.footer {
-  display: none;
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-serif);
+  animation: fadeInUp 1s ease-out;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .main-content {
-    padding: 0 15px 40px 15px;
-  }
-
-  .site-info {
-    margin: 50px 0 30px 0;
-  }
-
-  .friend-link {
-    font-size: 11px;
-  }
+.sub-title {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 /* 搜索容器 */
 .search-container {
   position: relative;
-  margin-bottom: 24px;
+  max-width: 600px;
+  margin: 0 auto var(--space-8);
+  animation: fadeInUp 1s ease-out 0.4s both;
 }
 
-.search {
-  --timing: 0.3s;
-  --width-of-input: 36rem;
-  --height-of-input: 50px;
-  --border-height: 2px;
-  --border-color: #303133;
-  --border-radius: 30px;
-  --after-border-radius: 1px;
-  position: relative;
-  width: var(--width-of-input);
-  height: var(--height-of-input);
+.search-input-wrapper {
   display: flex;
   align-items: center;
-  padding-inline: 0.8em;
-  border-radius: var(--border-radius);
-  transition: border-radius 0.5s ease;
-  background: #ffffff;
+  background-color: var(--card-bg);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
 }
 
-.search .icon {
-  --size: 30px;
-  width: var(--size);
-  height: var(--size);
-  border-radius: var(--size);
+.search-input-wrapper:focus-within {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   cursor: pointer;
+  transition: all var(--transition-normal);
+  flex-shrink: 0;
 }
 
-.input {
-  font-size: 0.9rem;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  padding-inline: 0.5em;
-  padding-block: 0.7em;
+.search-icon:hover {
+  background-color: rgba(35, 141, 247, 0.1);
+}
+
+.search-input {
+  flex: 1;
   border: none;
-  color: #000;
-}
-
-.search:before {
-  content: "";
-  position: absolute;
-  background: var(--border-color);
-  transform: scaleX(0);
-  transform-origin: center;
-  width: 100%;
-  height: var(--border-height);
-  left: 0;
-  bottom: 0;
-  border-radius: 1px;
-  transition: transform var(--timing) ease;
-}
-
-.search:focus-within {
-  border-radius: var(--after-border-radius);
-}
-
-input:focus {
   outline: none;
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background-color: transparent;
+  padding: var(--space-2) var(--space-4);
 }
 
-.search:focus-within:before {
-  transform: scale(1);
+.search-input::placeholder {
+  color: var(--text-muted);
 }
 
-.reset {
-  border: none;
-  background: none;
-  opacity: 0;
-  visibility: hidden;
-}
-
-input:not(:placeholder-shown) ~ .reset {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* 下拉菜单样式 */
-.dropdown {
+/* 搜索下拉菜单 */
+.search-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 5px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-width: 120px;
-  z-index: 100;
+  right: 0;
+  margin-top: var(--space-2);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
+  z-index: 100;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
   cursor: pointer;
-  transition: background-color 0.2s;
-  color: #333;
+  transition: all var(--transition-normal);
 }
 
 .dropdown-item:hover {
-  background-color: #f5f5f5;
+  background-color: rgba(35, 141, 247, 0.1);
+  color: var(--primary);
 }
 
-.dropdown-item img {
-  margin-top: 0;
+.dropdown-item-icon {
+  flex-shrink: 0;
 }
 
-/* 响应式调整 */
-@media (max-width: 768px) {
-  .search {
-    --width-of-input: 90vw;
-  }
-
-  .dropdown {
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
+.dropdown-item-text {
+  font-size: var(--text-sm);
+  font-weight: 500;
 }
 
-.popover {
+/* 搜索结果弹窗 */
+.custom-popover {
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.popover-content {
   max-height: 400px;
   overflow-y: auto;
 }
@@ -599,13 +518,215 @@ input:not(:placeholder-shown) ~ .reset {
 .popover-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 12px;
-  border-radius: 5px;
+  gap: var(--space-4);
+  padding: var(--space-4);
   cursor: pointer;
+  transition: all var(--transition-normal);
+  border-radius: var(--radius-lg);
+  margin: var(--space-1);
 }
 
 .popover-item:hover {
-  background-color: #F0F0F0;
+  background-color: rgba(35, 141, 247, 0.1);
+  transform: translateX(5px);
+}
+
+.popover-item-icon {
+  flex-shrink: 0;
+}
+
+.popover-item-content {
+  flex: 1;
+  text-align: left;
+}
+
+.popover-item-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+/* 主内容区域 */
+.main-content {
+  flex: 1;
+  padding: var(--space-12) var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.quick-access-section {
+  margin-bottom: var(--space-16);
+}
+
+.section-title {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-8);
+  font-family: var(--font-serif);
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: var(--radius-full);
+}
+
+/* 快速访问卡片网格 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.quick-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border: 1px solid var(--border);
+}
+
+.quick-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+.quick-card:hover .card-icon {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.card-content {
+  flex: 1;
+  text-align: left;
+}
+
+.card-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.card-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 页脚 */
+.footer {
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border);
+  padding: var(--space-8) var(--space-6);
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.friend-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.friend-link {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border);
+}
+
+.friend-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: var(--space-12) var(--space-4);
+  }
+  
+  .title {
+    font-size: var(--text-3xl);
+  }
+  
+  .sub-title {
+    font-size: var(--text-base);
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .main-content {
+    padding: var(--space-8) var(--space-4);
+  }
+  
+  .quick-card {
+    padding: var(--space-4);
+  }
+  
+  .friend-links {
+    gap: var(--space-2);
+  }
+  
+  .friend-link {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+  }
 }
 </style>
