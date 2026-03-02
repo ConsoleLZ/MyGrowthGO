@@ -43,6 +43,20 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "sickn33 / antigravity-awesome-skills",
+    ico: "/imgNull.png",
+    url: "https://github.com/sickn33/antigravity-awesome-skills",
+    description: "skills库",
+    tags: [tags.ai, tags.resources]
+  },
+  {
+    name: "anthropics / skills",
+    ico: "/imgNull.png",
+    url: "https://github.com/anthropics/skills",
+    description: "skills库",
+    tags: [tags.ai, tags.resources]
+  },
+  {
     name: "trae",
     ico: "https://lf-cdn.trae.com.cn/obj/trae-com-cn/trae_website_prod_cn/favicon.png",
     url: "https://www.trae.cn/",
