@@ -5,7 +5,7 @@
         <div class="header-logo">
           <g-link to="/" class="logo-link">
             <img
-              src="@/assets/images/logo.jpeg"
+              src="@/assets/images/logo.png"
               alt="GrowthGO"
               class="logo-image"
             />
