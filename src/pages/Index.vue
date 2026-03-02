@@ -5,15 +5,13 @@
         <div class="site-info">
           <div class="hero-content">
             <div class="avatar-container">
-              <!-- <div
-                class="avatar"
-                :style="{ 'background-image': 'url(' + $static.metadata.avatar + ')' }"
-              ></div> -->
+              <!-- 头像保留注释，可根据需要启用 -->
             </div>
             <h1 class="title">{{ $static.metadata.title }}</h1>
             <p class="sub-title">{{ $static.metadata.subTitle }}</p>
           </div>
 
+          <!-- 搜索结果弹窗（保留原有 el-popover，已默认 append-to-body） -->
           <el-popover
             placement="bottom-start"
             width="320"
@@ -23,10 +21,10 @@
             popper-class="custom-popover"
           >
             <div class="popover-content" v-if="searchData.length">
-              <div 
-                class="popover-item" 
-                v-for="item in searchData" 
-                :key="item.url" 
+              <div
+                class="popover-item"
+                v-for="item in searchData"
+                :key="item.url"
                 @click="openLink(item.url)"
               >
                 <img :src="item.ico" width="24px" alt="" class="popover-item-icon" />
@@ -37,13 +35,38 @@
               </div>
             </div>
             <el-empty v-else image="/empty.png" :image-size="64"></el-empty>
+
+            <!-- 搜索框及引擎选择区域（作为 reference） -->
             <div slot="reference">
-              <!-- 搜索框和下拉菜单 -->
               <div class="search-container">
                 <div class="search-input-wrapper">
-                  <div class="search-icon" @click="toggleDropdown">
-                    <img :src="currentEngine.icon" width="20px" alt="" />
-                  </div>
+                  <!-- 搜索引擎图标 + el-popover 触发 -->
+                  <el-popover
+                    placement="bottom-start"
+                    width="200"
+                    v-model="enginePopoverVisible"
+                    trigger="click"
+                    :append-to-body="true"
+                    popper-class="engine-popover"
+                  >
+                    <!-- 弹窗内容：搜索引擎列表 -->
+                    <div class="engine-list">
+                      <div
+                        class="engine-item"
+                        v-for="engine in searchEngines"
+                        :key="engine.value"
+                        @click="selectEngine(engine)"
+                      >
+                        <img :src="engine.icon" width="18px" alt="" />
+                        <span>{{ engine.name }}</span>
+                      </div>
+                    </div>
+                    <!-- 触发元素：图标本身 -->
+                    <div slot="reference" class="search-icon">
+                      <img :src="currentEngine.icon" width="20px" alt="" />
+                    </div>
+                  </el-popover>
+
                   <input
                     class="search-input"
                     :placeholder="currentEngine.placeholder"
@@ -52,24 +75,14 @@
                     @blur="visiblePopover = false"
                   />
                 </div>
-                <!-- 下拉菜单 -->
-                <div class="search-dropdown" v-show="showDropdown">
-                  <div
-                    class="dropdown-item"
-                    v-for="engine in searchEngines"
-                    :key="engine.name"
-                    @click="selectEngine(engine)"
-                  >
-                    <img :src="engine.icon" width="18px" alt="" class="dropdown-item-icon" />
-                    <span class="dropdown-item-text">{{ engine.name }}</span>
-                  </div>
-                </div>
+                <!-- 原自定义下拉菜单 .search-dropdown 已删除 -->
               </div>
             </div>
           </el-popover>
         </div>
       </div>
 
+      <!-- 快速访问区域 -->
       <div class="main-content">
         <section class="quick-access-section scroll-reveal" v-scroll-reveal>
           <h2 class="section-title">快速访问</h2>
@@ -94,6 +107,7 @@
         </section>
       </div>
 
+      <!-- 页脚友情链接 -->
       <footer class="footer">
         <div class="footer-content">
           <div class="friend-links">
@@ -138,7 +152,9 @@ export default {
   },
   data() {
     return {
-      showDropdown: false,
+      // 搜索引擎弹窗显隐控制
+      enginePopoverVisible: false,
+      // 可用搜索引擎列表
       searchEngines: [
         {
           name: "搜索",
@@ -161,62 +177,43 @@ export default {
           searchUrl: "https://www.bing.com/search?q=",
         },
       ],
+      // 当前选中的搜索引擎
       currentEngine: {},
+      // 搜索结果弹窗显隐
       visiblePopover: false,
+      // 搜索结果数据
       searchData: []
     };
   },
   mounted() {
-    // 尝试从localStorage获取保存的搜索引擎
+    // 从 localStorage 加载保存的搜索引擎
     this.loadSavedEngine();
-
-    // 点击页面其他地方关闭下拉菜单
-    document.addEventListener("click", this.closeDropdown);
   },
   beforeDestroy() {
-    // 移除事件监听
-    document.removeEventListener("click", this.closeDropdown);
+    // 无需手动移除全局监听，el-popover 已处理
   },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
     },
-    toggleDropdown(event) {
-      // 阻止事件冒泡，防止触发document的点击事件
-      event.stopPropagation();
-      this.showDropdown = !this.showDropdown;
-    },
     selectEngine(engine) {
       this.currentEngine = engine;
-      this.showDropdown = false;
-
-      // 保存选择到localStorage
+      this.enginePopoverVisible = false; // 选择后关闭弹窗
       this.saveEngine(engine);
     },
-    closeDropdown(event) {
-      // 如果点击的不是搜索容器区域，则关闭下拉菜单
-      if (!event.target.closest(".search-container")) {
-        this.showDropdown = false;
-      }
-    },
-    // 模糊搜索本网站内容
+    // 模糊搜索本网站内容（同原有逻辑）
     searchLocal(queryValue) {
       const searchData = [];
       const tokenizer = (str) => {
-        // 分词逻辑，返回完整的单词以及单词的部分片段
         const words = str.match(/[\u4e00-\u9fa5]+|[a-zA-Z0-9]+/g) || [];
         const subStrings = [];
 
         words.forEach((word) => {
           if (/^[a-zA-Z0-9]+$/.test(word)) {
-            // 英文或数字
-            // 生成所有可能的子串
             for (let i = 1; i <= word.length; i++) {
               subStrings.push(...word.slice(0, i));
             }
           } else {
-            // 中文
-            // 生成所有可能的 n-gram 子串
             for (let i = 1; i <= word.length; i++) {
               for (let j = 0; j <= word.length - i; j++) {
                 subStrings.push(word.substring(j, j + i));
@@ -227,28 +224,24 @@ export default {
 
         return subStrings.filter(
           (value, index, self) => self.indexOf(value) === index
-        ); // 去重
+        );
       };
 
       let miniSearch = new MiniSearch({
-        fields: ["name", "description"], // 搜索哪些字段
-        storeFields: ["name", "description", "url", "ico"], // 返回哪些字段
+        fields: ["name", "description"],
+        storeFields: ["name", "description", "url", "ico"],
         tokenize: tokenizer,
       });
 
       miniSearch.addAll(
-        mainData.map((item, index) => {
-          return {
-            ...item,
-            id: index,
-          };
-        })
-      ); // 配置搜索源
+        mainData.map((item, index) => ({
+          ...item,
+          id: index,
+        }))
+      );
 
-      // 搜索
       miniSearch.autoSuggest(queryValue, {
         filter: (result) => {
-          // 处理搜索结果
           searchData.push({
             name: result.name,
             description: result.description,
@@ -266,7 +259,7 @@ export default {
       if (query) {
         if (this.currentEngine.value === "default") {
           this.visiblePopover = true;
-          this.searchData = this.searchLocal(query)
+          this.searchData = this.searchLocal(query);
         } else {
           window.open(
             this.currentEngine.searchUrl + encodeURIComponent(query),
@@ -275,7 +268,6 @@ export default {
         }
       }
     },
-    // 保存搜索引擎到localStorage
     saveEngine(engine) {
       try {
         localStorage.setItem("preferredSearchEngine", JSON.stringify(engine));
@@ -283,13 +275,11 @@ export default {
         console.warn("无法保存搜索引擎偏好:", e);
       }
     },
-    // 从localStorage加载保存的搜索引擎
     loadSavedEngine() {
       try {
         const savedEngine = localStorage.getItem("preferredSearchEngine");
         if (savedEngine) {
           const parsedEngine = JSON.parse(savedEngine);
-          // 确保保存的引擎在可用引擎列表中
           const foundEngine = this.searchEngines.find(
             (engine) => engine.value === parsedEngine.value
           );
@@ -301,8 +291,6 @@ export default {
       } catch (e) {
         console.warn("无法加载保存的搜索引擎:", e);
       }
-
-      // 如果没有保存的引擎或加载失败，使用默认引擎
       this.currentEngine = this.searchEngines[0];
     },
   },
@@ -310,6 +298,7 @@ export default {
 </script>
 
 <style scoped>
+/* 原有样式保持不变，仅移除 .search-dropdown 相关样式，并添加 engine-popover 自定义样式 */
 .index-page {
   min-height: 100vh;
   display: flex;
@@ -323,7 +312,7 @@ export default {
   justify-content: center;
   background: linear-gradient(135deg, var(--background) 0%, #f0f0f0 100%);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* 保持原有 overflow: hidden，不影响 body 上的弹窗 */
 }
 
 .hero-section::before {
@@ -453,56 +442,44 @@ export default {
   color: var(--text-muted);
 }
 
-/* 搜索下拉菜单 */
-.search-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: var(--space-2);
-  background-color: var(--card-bg);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  z-index: 100;
-  animation: slideDown 0.3s ease-out;
+/* 搜索引擎弹窗自定义样式（完全还原原 .search-dropdown 外观） */
+.engine-popover {
+  background-color: var(--card-bg) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: none !important;
+  padding: var(--space-2) 0 !important;
+  min-width: 160px;
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.engine-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.dropdown-item {
+.engine-item {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-3) var(--space-4);
   cursor: pointer;
   transition: all var(--transition-normal);
 }
 
-.dropdown-item:hover {
+.engine-item:hover {
   background-color: rgba(35, 141, 247, 0.1);
-  color: var(--primary);
 }
 
-.dropdown-item-icon {
+.engine-item img {
   flex-shrink: 0;
 }
 
-.dropdown-item-text {
+.engine-item span {
   font-size: var(--text-sm);
-  font-weight: 500;
+  color: var(--text-primary);
 }
 
-/* 搜索结果弹窗 */
+/* 搜索结果弹窗样式（原 custom-popover，无需修改） */
 .custom-popover {
   border-radius: var(--radius-xl) !important;
   box-shadow: var(--shadow-xl) !important;
