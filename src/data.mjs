@@ -43,6 +43,14 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "animejs",
+    ico: "https://animejs.com/assets/images/favicon.png",
+    url: "https://animejs.com/",
+    description: "一个轻量级、功能强大的 JavaScript 动画库，用于为网页元素（包括 CSS 属性、SVG、DOM 属性、JavaScript 对象等）创建高性能的动画效果",
+    tags: [tags.animation, tags.web],
+    recommend: true
+  },
+  {
     name: "sickn33 / antigravity-awesome-skills",
     ico: "/imgNull.png",
     url: "https://github.com/sickn33/antigravity-awesome-skills",
@@ -1172,7 +1180,8 @@ export const mainData = [
     ico: "https://gsap.com/favicon-32x32.png",
     url: "https://gsap.com/",
     description: "使用js实现的一个非常强大和专业的动画库",
-    tags: [tags.animation, tags.web]
+    tags: [tags.animation, tags.web],
+    recommend: true
   },
   {
     name: "mockaroo",
