@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "memstechtips / Winhance",
+    ico: "/imgNull.png",
+    url: "https://github.com/memstechtips/Winhance",
+    description: "旨在优化、定制和提升您的Windows体验的应用程序",
+    tags: [tags.tools]
+  },
+  {
     name: "animejs",
     ico: "https://animejs.com/assets/images/favicon.png",
     url: "https://animejs.com/",
