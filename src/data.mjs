@@ -47,7 +47,8 @@ export const mainData = [
     ico: "https://openclaw.ai/favicon.svg",
     url: "https://openclaw.ai/",
     description: "真正行动的人工智能",
-    tags: [tags.ai]
+    tags: [tags.ai],
+    recommend: true
   },
   {
     name: "memstechtips / Winhance",
