@@ -43,6 +43,13 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "OpenClaw",
+    ico: "https://openclaw.ai/favicon.svg",
+    url: "https://openclaw.ai/",
+    description: "真正行动的人工智能",
+    tags: [tags.ai]
+  },
+  {
     name: "memstechtips / Winhance",
     ico: "/imgNull.png",
     url: "https://github.com/memstechtips/Winhance",
