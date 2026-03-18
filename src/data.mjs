@@ -43,6 +43,22 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "Stitch",
+    ico: "https://www.gstatic.com/labs-code/favicon-32x32.png",
+    url: "https://stitch.withgoogle.com/",
+    description: "基于人工智能的 UI 生成工具",
+    tags: [tags.ai, tags.design],
+    recommend: true
+  },
+  {
+    name: "V0",
+    ico: "https://v0.app/assets/icon.svg",
+    url: "https://v0.app/",
+    description: "基于人工智能的 UI 生成工具",
+    tags: [tags.ai, tags.design],
+    recommend: true
+  },
+  {
     name: "OpenClaw",
     ico: "https://openclaw.ai/favicon.svg",
     url: "https://openclaw.ai/",
