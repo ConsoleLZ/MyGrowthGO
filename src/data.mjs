@@ -43,13 +43,6 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
-    name: "Smart Input Pro (Chinese)",
-    ico: "https://xiaolvpuzi.gallerycdn.vsassets.io/extensions/xiaolvpuzi/smart-input-pro-vscode/1.2.2/1765631111897/Microsoft.VisualStudio.Services.Icons.Default",
-    url: "https://marketplace.visualstudio.com/items?itemName=xiaolvpuzi.smart-input-pro-vscode",
-    description: "根据光标位置自动切换输入法，并用颜色指示中英文状态",
-    tags: [tags.plugin]
-  },
-  {
     name: "Stitch",
     ico: "https://www.gstatic.com/labs-code/favicon-32x32.png",
     url: "https://stitch.withgoogle.com/",
