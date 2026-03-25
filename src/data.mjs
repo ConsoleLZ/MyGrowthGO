@@ -43,6 +43,14 @@ const baseURL = "/";
 // recommend: true
 export const mainData = [
   {
+    name: "Typora",
+    ico: "https://typora.io/img/favicon-32.png",
+    url: "https://typora.io/",
+    description: "一个极简的Markdown编辑器和阅读器，主题丰富",
+    tags: [tags.tools],
+    recommend: true
+  },
+  {
     name: "Stitch",
     ico: "https://www.gstatic.com/labs-code/favicon-32x32.png",
     url: "https://stitch.withgoogle.com/",
